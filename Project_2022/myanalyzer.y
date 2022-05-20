@@ -66,10 +66,10 @@
 
 %type <crepr> decl_list  func_input 
 %type <crepr> func_body func_call main_func
-%type <crepr> ident comp const var func_decl 
-%type <crepr> expr stmt parameters
+%type <crepr> ident const var func_decl  //comp 
+%type <crepr> expr if_stmt stmts parameters
 %type <crepr> data_type
-%type <crepr> instr instr_list complex_instr assign_instr
+%type <crepr> instr assign_instr
 
 
 //   PRIORITIES
@@ -78,12 +78,11 @@
 %left  KW_AND
 %left  KW_OR
 %right OP_POWER
-%right OP_SIGN     //override gia telestes proshmou
 %left  OP_LS OP_LS_EQ OP_GRT OP_GRT_EQ OP_EQUALS OP_NOT_EQ
 %left  '+' '-'
 %left  '*' '/' '%'
 %left '(' ')' '[' ']' '.'    //prosvash meloys syn8etoy typoy, klhsh synarthshs
-
+%right OP_SIGN               //override gia telestes proshmou
 
 %%
 program: decl_list { 
@@ -100,39 +99,34 @@ program: decl_list {
 ;
 
 expr:
-      REAL        {$$ = $1;}
-    | STRING      {$$ = $1;}
-    | IDENTIFIER  {$$ = $1;}
+      '('expr')'                  {$$ = template("(%s)", $2);} 
+    | '+' expr %prec OP_SIGN      {$$ = template("+%s", $2);}
+    | '-' expr %prec OP_SIGN      {$$ = template("-%s", $2);}
+    | expr OP_POWER expr          {$$ = template("pow(%s, %s)", $1, $3);}
+    | expr '+' expr               {$$ = template("%s + %s", $1, $3);}
+    | expr '-' expr               {$$ = template("%s - %s", $1, $3);}
+    | expr '*' expr               {$$ = template("%s * %s", $1, $3);}
+    | expr '/' expr               {$$ = template("%s / %s", $1, $3);}
+    | expr '%' expr               {$$ = template("%s %% %s", $1, $3);}
+    | expr OP_EQUALS expr         {$$ = template("%s == %s", $1, $3);}
+    | expr OP_NOT_EQ expr         {$$ = template("%s != %s", $1, $3);}
+    | expr OP_LS expr             {$$ = template("%s < %s", $1, $3);}
+    | expr OP_GRT expr            {$$ = template("%s > %s", $1, $3);}
+    | expr OP_LS_EQ expr          {$$ = template("%s <= %s", $1, $3);}
+    | expr OP_GRT_EQ expr         {$$ = template("%s >= %s", $1, $3);}
+    | KW_NOT expr                 {$$ = template("NOT %s", $2);}
+    | expr KW_AND expr            {$$ = template("%s && %s", $1, $3);}
+    | expr KW_OR expr             {$$ = template("%s | %s", $1, $3);}
+    | KW_TRUE                     {$$ = template("1");}
+    | KW_FALSE                    {$$ = template("0");}
+    | IDENTIFIER '[' expr ']'     {$$ = template("%s[%s]", $1, $3);}
+    | IDENTIFIER                  {$$ = $1;}
+    | POSINT                      {$$ = $1;}
+    | REAL                        {$$ = $1;}    
+    | STRING                      {$$ = $1;}
+    | func_call                   {$$ = $1;}
     ;
-      /*  KW_NOT expr                 {$$ = template("NOT %s", $2);}
-      | '+' expr %prec SIGN_OP      {$$ = template("+%s", $2);}
-      | '-' expr %prec SIGN_OP      {$$ = template("-%s", $2);}
-      | expr TK_OP_POW expr         {$$ = template("pow(%s, %s)", $1, $3);}
-      | expr '*' expr               {$$ = template("%s * %s", $1, $3);}
-      | expr '/' expr               {$$ = template("%s / %s", $1, $3);}
-      | expr '%' expr               {$$ = template("%s %% %s", $1, $3);}
-      | expr '+' expr               {$$ = template("%s + %s", $1, $3);}
-      | expr '-' expr               {$$ = template("%s - %s", $1, $3);}
-      | expr TK_OP_EQUAL expr       {$$ = template("%s == %s", $1, $3);}
-      | expr TK_OP_NOTEQ expr       {$$ = template("%s != %s", $1, $3);}
-      | expr TK_OP_SMALLER expr     {$$ = template("%s < %s", $1, $3);}
-      | expr TK_OP_BIGGER expr      {$$ = template("%s > %s", $1, $3);}
-      | expr TK_OP_SMALLEQ expr     {$$ = template("%s <= %s", $1, $3);}
-      | expr TK_OP_BIGEQ expr       {$$ = template("%s >= %s", $1, $3);}
-      | expr KW_AND expr            {$$ = template("%s && %s", $1, $3);}
-      | expr KW_OR expr             {$$ = template("%s | %s", $1, $3);}
-      | '('expr')'                  {$$ = template("(%s)", $2);} 
-      | func_call                   {$$ = $1;}
-      
-      | IDENT'['expr']'             {$$ = template("%s[%s]", $1, $3);}
-      | STRING                      {$$ = $1;}
-      | REAL                        {$$ = $1;}
-      | NUMBER                      {$$ = $1;}
-      | KW_TRUE                     {$$ = template("1");}
-      | KW_FALSE                    {$$ = template("0");}
-      | KW_NIL                      {$$ = template("NULL");}
-      ;
-*/
+
 
 data_type:
             KW_BOOL     {$$ = template("int");}
@@ -140,19 +134,13 @@ data_type:
           | KW_SCALAR   {$$ = template("double");} 
           | KW_STRING   {$$ = template("char*");}
           ;
-stmt:
-      complex_instr {$$ = $1;}
-    //| instr {$$ = template("{\n%s\n}", $1);} // Doesn't needed ??
+
+
+stmts:
+      instr       {$$ = template("%s", $1);}
+    | instr stmts {$$ = template("%s%s", $1, $2);}
+    | if_stmt     {$$ = template("%s", $1);}
     ;
-
-complex_instr: 
-              '{' instr_list '}'  {$$ = template("{\n%s\n}", $2);}
-              ;
-
-instr_list:
-            instr              {$$ = $1;}
-          | instr instr_list   {$$ = template("%s %s", $1, $2);}
-          ;
 
 ident:
         IDENTIFIER              {$$ = $1;}
@@ -161,7 +149,7 @@ ident:
 
 
 const:
-        KW_CONST IDENTIFIER '=' expr ':' data_type ';' {$$ = template("const %s %s = %s;\n", $6, $2, $3);}
+        KW_CONST IDENTIFIER '=' expr ':' data_type ';' {$$ = template("const %s %s = %s;\n", $6, $2, $4);}
         ;
 
 var:
@@ -171,18 +159,20 @@ var:
     // TODO w, z: Coordinates; coordinates is comp
     ;
 
+if_stmt: 
+          KW_IF '('expr')'':' stmts KW_ENDIF ';'                          {$$ = template("if (%s){\n%s}\n", $3, $6);}
+        | KW_IF '('expr')'':' stmts KW_ELSE ':'  stmts  KW_ENDIF ';'      {$$ = template("if (%s){\n%s} else {\n%s}\n", $3, $6, $9);}
+
 instr: 
-        assign_instr ';'                                            {$$ = template("%s;\n", $1);}
-     // | KW_IF '('expr')'':' stmt %prec KW_ELSE_LOW_PRIOR            {$$ = template("if (%s) %s\n", $3, $5);}
-      | KW_IF '('expr')'':' stmt KW_ELSE  stmt  KW_ENDIF ';'        {$$ = template("if (%s) %s else %s\n", $3, $5, $7);}         //TODO continue from here
-      | KW_FOR '('assign_instr ';' assign_instr ')' stmt            {$$ = template("for (%s ; %s ; %s) %s\n", $3, $5, $7);}
-      | KW_FOR '('assign_instr ';' expr ';' assign_instr ')' stmt   {$$ = template("for (%s ; %s ; %s) %s\n", $3, $5, $7, $9);}
-      | KW_WHILE '(' expr ')' stmt                                  {$$ = template("while ( %s ) %s\n", $3, $5);}
-      | KW_BREAK ';'                                                {$$ = template("break;\n");}
-      | KW_CONTINUE ';'                                             {$$ = template("continue;\n");}
-      | KW_RETURN ';'                                               {$$ = template("return;\n");}
-      | KW_RETURN expr ';'                                          {$$ = template("return %s;\n", $2);}
-      | func_call ';'                                               {$$ = template("%s;\n", $1);}
+        assign_instr ';'                                                {$$ = template("%s;\n", $1);}
+      | KW_FOR IDENTIFIER KW_IN '[' expr':' expr ']'':' stmts KW_ENDFOR ';'           {$$ = template("for (%s = %s; %s<%s; %s+=1){\n%s}\n", $2, $5, $2, $7, $2, $10);}         
+      | KW_FOR IDENTIFIER KW_IN '[' expr':' expr ':' expr']'':' stmts KW_ENDFOR ';'   {$$ = template("for (%s = %s; %s<%s; %s+=%s){\n%s}\n", $2, $5, $2, $7, $2, $9, $12);} //TODO continue from here
+      | KW_WHILE '(' expr ')'':' stmts KW_ENDWHILE ';'      {$$ = template("while (%s){\n%s}\n", $3, $6);}
+      | KW_BREAK ';'                                        {$$ = template("break;\n");}
+      | KW_CONTINUE ';'                                     {$$ = template("continue;\n");}
+      | KW_RETURN ';'                                       {$$ = template("return;\n");}
+      | KW_RETURN expr ';'                                  {$$ = template("return %s;\n", $2);}
+      | func_call ';'                                       {$$ = template("%s;\n", $1);}
       ;
 
 assign_instr:
@@ -197,9 +187,10 @@ assign_instr:
 
 func_body: 
             %empty                 {$$ = template("");}    
-          | var func_body          {$$ = template("\t%s%s", $1, $2);}
-          | const func_body        {$$ = template("\t%s%s", $1, $2);}
-          | instr func_body        {$$ = template("\t%s%s", $1, $2);}
+          | var func_body          {$$ = template("%s%s", $1, $2);}
+          | const func_body        {$$ = template("%s%s", $1, $2);}
+          | instr func_body        {$$ = template("%s%s", $1, $2);}
+          | if_stmt func_body      {$$ = template("%s%s", $1, $2);}
           ;
 
 func_decl:
@@ -214,8 +205,9 @@ func_call:
             ;
 
 func_input:
-            %empty         {$$ = template("");}
-          | expr           {$$ = $1;}
+            %empty               {$$ = template("");}
+          | expr ',' func_input  {$$ = template("%s , %s", $1, $3);}
+          | expr                 {$$ = $1;}
           ;
 
 parameters:
@@ -233,11 +225,11 @@ main_func:
 
 decl_list:
             %empty                    {$$ = template("\n");}
-          | decl_list comp            {$$ = template("%s %s", $1, $2);}  //TODO comp
-          | decl_list const           {$$ = template("%s %s", $1, $2);}
-          | decl_list var             {$$ = template("%s %s", $1, $2);}
-          | decl_list func_decl       {$$ = template("%s %s", $1, $2);}   
-          | decl_list main_func       {$$ = template("%s %s", $1, $2);}
+          //| decl_list comp            {$$ = template("%s %s", $1, $2);}  //TODO comp
+          | decl_list const           {$$ = template("%s%s", $1, $2);}
+          | decl_list var             {$$ = template("%s%s", $1, $2);}
+          | decl_list func_decl       {$$ = template("%s%s", $1, $2);}   
+          | decl_list main_func       {$$ = template("%s%s", $1, $2);}
           ;
 
 
