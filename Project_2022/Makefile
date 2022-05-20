@@ -7,11 +7,11 @@ myanalyzer.tab.c:
 	bison -d -v -r all myanalyzer.y
 
 lex.yy.c:
-	#flex mylexer_v0.l 
-	flex mylexer.l 
+	flex mylexer_v0.l 
+	#flex mylexer.l 
 clean:
 	rm lex.yy.c myanalyzer.tab.c myanalyzer.tab.h  myanalyzer.output mycompiler
 
 tests:
-	./mycompiler < prime.th > output.c
+	./mycompiler < .th > output.c
 	#gcc helloWorld.c -o helloWorld

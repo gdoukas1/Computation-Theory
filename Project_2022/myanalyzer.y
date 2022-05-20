@@ -64,9 +64,9 @@
 %start program
 
 
-%type <crepr> decl_list  func_input 
+%type <crepr> decl_list func_decl func_input 
 %type <crepr> func_body func_call main_func
-%type <crepr> ident const var func_decl  //comp 
+%type <crepr> ident const var comp 
 %type <crepr> expr if_stmt stmts parameters
 %type <crepr> data_type
 %type <crepr> instr assign_instr
@@ -81,8 +81,9 @@
 %left  OP_LS OP_LS_EQ OP_GRT OP_GRT_EQ OP_EQUALS OP_NOT_EQ
 %left  '+' '-'
 %left  '*' '/' '%'
-%left '(' ')' '[' ']' '.'    //prosvash meloys syn8etoy typoy, klhsh synarthshs
+
 %right OP_SIGN               //override gia telestes proshmou
+%right POSINT ']'
 
 %%
 program: decl_list { 
@@ -98,9 +99,20 @@ program: decl_list {
 }
 ;
 
+ident:
+        IDENTIFIER              {$$ = $1;}
+      | IDENTIFIER ',' ident    {$$ = template("%s , %s", $1, $3);}
+      ;
+
+comp: 
+      KW_COMP IDENTIFIER ':' comp_body KW_ENDCOMP ';' {$$ = template("")}     //TODO continue from here
+
+const:
+        KW_CONST IDENTIFIER '=' expr ':' data_type ';' {$$ = template("const %s %s = %s;\n", $6, $2, $4);}
+      ;
+
 expr:
-      '('expr')'                  {$$ = template("(%s)", $2);} 
-    | '+' expr %prec OP_SIGN      {$$ = template("+%s", $2);}
+      '+' expr %prec OP_SIGN      {$$ = template("+%s", $2);}
     | '-' expr %prec OP_SIGN      {$$ = template("-%s", $2);}
     | expr OP_POWER expr          {$$ = template("pow(%s, %s)", $1, $3);}
     | expr '+' expr               {$$ = template("%s + %s", $1, $3);}
@@ -117,73 +129,26 @@ expr:
     | KW_NOT expr                 {$$ = template("NOT %s", $2);}
     | expr KW_AND expr            {$$ = template("%s && %s", $1, $3);}
     | expr KW_OR expr             {$$ = template("%s | %s", $1, $3);}
+    | '('expr')'                  {$$ = template("(%s)", $2);} 
+    | func_call                   {$$ = $1;}
     | KW_TRUE                     {$$ = template("1");}
     | KW_FALSE                    {$$ = template("0");}
-    | IDENTIFIER '[' expr ']'     {$$ = template("%s[%s]", $1, $3);}
     | IDENTIFIER                  {$$ = $1;}
-    | POSINT                      {$$ = $1;}
-    | REAL                        {$$ = $1;}    
+    | IDENTIFIER '['expr']'       {$$ = template("%s[%s]", $1, $3);}
     | STRING                      {$$ = $1;}
-    | func_call                   {$$ = $1;}
+    | REAL                        {$$ = $1;}    
+    | POSINT                      {$$ = $1;}
     ;
 
 
-data_type:
-            KW_BOOL     {$$ = template("int");}
-          | KW_INT      {$$ = template("int");}
-          | KW_SCALAR   {$$ = template("double");} 
-          | KW_STRING   {$$ = template("char*");}
-          ;
-
-
-stmts:
-      instr       {$$ = template("%s", $1);}
-    | instr stmts {$$ = template("%s%s", $1, $2);}
-    | if_stmt     {$$ = template("%s", $1);}
-    ;
-
-ident:
-        IDENTIFIER              {$$ = $1;}
-      | IDENTIFIER ',' ident    {$$ = template("%s , %s", $1, $3);}
-      ;
-
-
-const:
-        KW_CONST IDENTIFIER '=' expr ':' data_type ';' {$$ = template("const %s %s = %s;\n", $6, $2, $4);}
-        ;
 
 var:
       ident ':' data_type ';'      {$$ = template("%s %s;\n", $3, $1);}
-    | IDENTIFIER '[' POSINT ']' ':' data_type ';'  {$$ = template("%s %s[%s];\n", $6, $1, $3);}
+    | IDENTIFIER '[' POSINT ']' ':' data_type ';' {$$ = template("%s %s[%s];\n", $6, $1, $3);}
     | IDENTIFIER '[' ']' ':' data_type ';'  {$$ = template("%s %s[];\n", $5, $1);}
     // TODO w, z: Coordinates; coordinates is comp
     ;
 
-if_stmt: 
-          KW_IF '('expr')'':' stmts KW_ENDIF ';'                          {$$ = template("if (%s){\n%s}\n", $3, $6);}
-        | KW_IF '('expr')'':' stmts KW_ELSE ':'  stmts  KW_ENDIF ';'      {$$ = template("if (%s){\n%s} else {\n%s}\n", $3, $6, $9);}
-
-instr: 
-        assign_instr ';'                                                {$$ = template("%s;\n", $1);}
-      | KW_FOR IDENTIFIER KW_IN '[' expr':' expr ']'':' stmts KW_ENDFOR ';'           {$$ = template("for (%s = %s; %s<%s; %s+=1){\n%s}\n", $2, $5, $2, $7, $2, $10);}         
-      | KW_FOR IDENTIFIER KW_IN '[' expr':' expr ':' expr']'':' stmts KW_ENDFOR ';'   {$$ = template("for (%s = %s; %s<%s; %s+=%s){\n%s}\n", $2, $5, $2, $7, $2, $9, $12);} //TODO continue from here
-      | KW_WHILE '(' expr ')'':' stmts KW_ENDWHILE ';'      {$$ = template("while (%s){\n%s}\n", $3, $6);}
-      | KW_BREAK ';'                                        {$$ = template("break;\n");}
-      | KW_CONTINUE ';'                                     {$$ = template("continue;\n");}
-      | KW_RETURN ';'                                       {$$ = template("return;\n");}
-      | KW_RETURN expr ';'                                  {$$ = template("return %s;\n", $2);}
-      | func_call ';'                                       {$$ = template("%s;\n", $1);}
-      ;
-
-assign_instr:
-              IDENTIFIER '=' expr  {$$ = template("%s = %s", $1, $3);}
-            | IDENTIFIER OP_ASGN_ADD expr  {$$ = template("%s += %s", $1, $3);}
-            | IDENTIFIER OP_ASGN_SUB expr  {$$ = template("%s -= %s", $1, $3);}
-            | IDENTIFIER OP_ASGN_MUL expr  {$$ = template("%s *= %s", $1, $3);}
-            | IDENTIFIER OP_ASGN_DIV expr  {$$ = template("%s /= %s", $1, $3);}
-            | IDENTIFIER OP_ASGN_MOD expr  {$$ = template("%s %= %s", $1, $3);}
-            | IDENTIFIER '[' POSINT ']' '=' expr {$$ = template("%s[%s] = %s", $1, $3, $6);}
-            ;
 
 func_body: 
             %empty                 {$$ = template("");}    
@@ -199,15 +164,14 @@ func_decl:
           | KW_DEF IDENTIFIER '(' parameters ')' ':' func_body KW_ENDDEF ';'  {$$ = template("void %s (%s) {\n%s}\n\n", $2, $4, $7);}
           ;
 
-
 func_call:
             IDENTIFIER'('func_input')' {$$ = template("%s(%s)", $1, $3);}
-            ;
+          ;
 
 func_input:
             %empty               {$$ = template("");}
-          | expr ',' func_input  {$$ = template("%s , %s", $1, $3);}
           | expr                 {$$ = $1;}
+          | expr ',' func_input  {$$ = template("%s , %s", $1, $3);}
           ;
 
 parameters:
@@ -218,21 +182,61 @@ parameters:
           | IDENTIFIER '['']' ':' data_type ',' parameters {$$ = template("%s* %s, %s", $5, $1, $7);}
           ;
 
-
 main_func:
             KW_DEF KW_MAIN '(' ')' ':' func_body KW_ENDDEF ';' {$$ = template("int main() {\n%s}\n", $6);}
-            ;
+         ;
 
 decl_list:
             %empty                    {$$ = template("\n");}
-          //| decl_list comp            {$$ = template("%s %s", $1, $2);}  //TODO comp
+          | decl_list comp            {$$ = template("%s%s", $1, $2);}
           | decl_list const           {$$ = template("%s%s", $1, $2);}
           | decl_list var             {$$ = template("%s%s", $1, $2);}
           | decl_list func_decl       {$$ = template("%s%s", $1, $2);}   
           | decl_list main_func       {$$ = template("%s%s", $1, $2);}
           ;
 
+instr: 
+        assign_instr ';'                                                {$$ = template("%s;\n", $1);}
+      | KW_FOR IDENTIFIER KW_IN '[' expr':' expr ']'':' stmts KW_ENDFOR ';'           {$$ = template("for (%s = %s; %s<%s; %s+=1){\n%s}\n", $2, $5, $2, $7, $2, $10);}         
+      | KW_FOR IDENTIFIER KW_IN '[' expr':' expr ':' expr']'':' stmts KW_ENDFOR ';'   {$$ = template("for (%s = %s; %s<%s; %s+=%s){\n%s}\n", $2, $5, $2, $7, $2, $9, $12);} 
+      | KW_WHILE '(' expr ')'':' stmts KW_ENDWHILE ';'      {$$ = template("while (%s){\n%s}\n", $3, $6);}
+      | KW_BREAK ';'                                        {$$ = template("break;\n");}
+      | KW_CONTINUE ';'                                     {$$ = template("continue;\n");}
+      | KW_RETURN ';'                                       {$$ = template("return;\n");}
+      | KW_RETURN expr ';'                                  {$$ = template("return %s;\n", $2);}
+      | func_call ';'                                       {$$ = template("%s;\n", $1);}
+      ;
 
+assign_instr:
+              IDENTIFIER '=' expr  {$$ = template("%s = %s", $1, $3);}
+            | IDENTIFIER '['expr']' '=' expr {$$ = template("%s[%s] = %s", $1, $3, $6);}
+            | IDENTIFIER OP_ASGN_ADD expr  {$$ = template("%s += %s", $1, $3);}
+            | IDENTIFIER OP_ASGN_SUB expr  {$$ = template("%s -= %s", $1, $3);}
+            | IDENTIFIER OP_ASGN_MUL expr  {$$ = template("%s *= %s", $1, $3);}
+            | IDENTIFIER OP_ASGN_DIV expr  {$$ = template("%s /= %s", $1, $3);}
+            | IDENTIFIER OP_ASGN_MOD expr  {$$ = template("%s %= %s", $1, $3);}
+            ;
+
+stmts:
+      instr         {$$ = template("%s", $1);}
+    | instr stmts   {$$ = template("%s%s", $1, $2);}
+    | if_stmt       {$$ = template("%s", $1);}
+    | if_stmt stmts {$$ = template("%s%s", $1, $2);}
+    ;
+
+
+if_stmt: 
+          KW_IF '('expr')'':' stmts KW_ENDIF ';'                          {$$ = template("if (%s){\n%s}\n", $3, $6);}
+        | KW_IF '('expr')'':' stmts KW_ELSE ':'  stmts  KW_ENDIF ';'      {$$ = template("if (%s){\n%s} else {\n%s}\n", $3, $6, $9);}
+
+
+
+data_type:
+            KW_BOOL     {$$ = template("int");}
+          | KW_INT      {$$ = template("int");}
+          | KW_SCALAR   {$$ = template("double");} 
+          | KW_STRING   {$$ = template("char*");}
+          ;
 
 %%
 int main () {
