@@ -51,6 +51,7 @@ enddef;
 
 -- Print contents of an array
 def printArray(a[]:integer, size:integer):
+    i: integer;
     for i in [0:size]:
         writeInteger(a[i]);
         if (i==size-1):
