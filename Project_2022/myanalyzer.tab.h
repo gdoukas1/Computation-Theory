@@ -56,42 +56,43 @@ extern int yydebug;
     KW_INT = 262,
     KW_SCALAR = 263,
     KW_STRING = 264,
-    KW_BOOL = 265,
-    KW_TRUE = 266,
-    KW_FALSE = 267,
-    KW_CONST = 268,
-    KW_IF = 269,
-    KW_ELSE = 270,
-    KW_ENDIF = 271,
-    KW_FOR = 272,
-    KW_IN = 273,
-    KW_ENDFOR = 274,
-    KW_WHILE = 275,
-    KW_ENDWHILE = 276,
-    KW_BREAK = 277,
-    KW_CONTINUE = 278,
-    KW_NOT = 279,
-    KW_AND = 280,
-    KW_OR = 281,
-    KW_DEF = 282,
-    KW_ENDDEF = 283,
-    KW_COMP = 284,
-    KW_ENDCOMP = 285,
-    KW_RETURN = 286,
-    KW_MAIN = 287,
-    OP_ASGN_ADD = 288,
-    OP_ASGN_SUB = 289,
-    OP_ASGN_MUL = 290,
-    OP_ASGN_DIV = 291,
-    OP_ASGN_MOD = 292,
-    OP_POWER = 293,
-    OP_EQUALS = 294,
-    OP_NOT_EQ = 295,
-    OP_LS = 296,
-    OP_LS_EQ = 297,
-    OP_GRT = 298,
-    OP_GRT_EQ = 299,
-    OP_SIGN = 300
+    KW_VOID = 265,
+    KW_BOOL = 266,
+    KW_TRUE = 267,
+    KW_FALSE = 268,
+    KW_CONST = 269,
+    KW_IF = 270,
+    KW_ELSE = 271,
+    KW_ENDIF = 272,
+    KW_FOR = 273,
+    KW_IN = 274,
+    KW_ENDFOR = 275,
+    KW_WHILE = 276,
+    KW_ENDWHILE = 277,
+    KW_BREAK = 278,
+    KW_CONTINUE = 279,
+    KW_NOT = 280,
+    KW_AND = 281,
+    KW_OR = 282,
+    KW_DEF = 283,
+    KW_ENDDEF = 284,
+    KW_COMP = 285,
+    KW_ENDCOMP = 286,
+    KW_RETURN = 287,
+    KW_MAIN = 288,
+    OP_ASGN_ADD = 289,
+    OP_ASGN_SUB = 290,
+    OP_ASGN_MUL = 291,
+    OP_ASGN_DIV = 292,
+    OP_ASGN_MOD = 293,
+    OP_POWER = 294,
+    OP_EQUALS = 295,
+    OP_NOT_EQ = 296,
+    OP_LS = 297,
+    OP_LS_EQ = 298,
+    OP_GRT = 299,
+    OP_GRT_EQ = 300,
+    OP_SIGN = 301
   };
 #endif
 
@@ -99,11 +100,11 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 11 "myanalyzer.y"
+#line 14 "myanalyzer.y"
 
     char* crepr;
 
-#line 107 "myanalyzer.tab.h"
+#line 108 "myanalyzer.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

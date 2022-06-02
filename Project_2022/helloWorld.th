@@ -1,5 +1,0 @@
--- My first Theta program. File: myprog.th
-const message = "Hello, world!\n" :str;
-def main():
-    writeStr(message);
-enddef;

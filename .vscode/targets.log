@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat May 21 01:35:09 2022
+# Make data base, printed on Thu Jun  2 21:18:32 2022
 
 # Variables
 
@@ -51,7 +51,7 @@ SNAP_DATA = /var/snap/code/97
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 9:55974
+JOURNAL_STREAM = 9:60230
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -81,7 +81,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 _ = /snap/code/97/usr/share/code/code
 # environment
-MANAGERPID = 8367
+MANAGERPID = 6100
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -93,11 +93,11 @@ GSETTINGS_SCHEMA_DIR = /snap/code/97/usr/share/glib-2.0/schemas
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/giorgos/.local/bin:/home/giorgos/anaconda3/bin:/home/giorgos/anaconda3/condabin:/home/giorgos/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PATH = /home/giorgos/.local/bin:/home/giorgos/anaconda3/bin:/home/giorgos/anaconda3/condabin:/home/giorgos/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/giorgos/.dotnet/tools:/home/giorgos/.dotnet/tools
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/Lenovo-B5400:@/tmp/.ICE-unix/8593,unix/Lenovo-B5400:/tmp/.ICE-unix/8593
+SESSION_MANAGER = local/Lenovo-B5400:@/tmp/.ICE-unix/6320,unix/Lenovo-B5400:/tmp/.ICE-unix/6320
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -117,7 +117,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 253d89eac8fe4318be5ece1bbbb3b1e3
+INVOCATION_ID = 55decc8f94934d9597df92cb7f799bdf
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/97/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -129,7 +129,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 576146
+GIO_LAUNCHED_DESKTOP_FILE_PID = 17643
 # automatic
 %F = $(notdir $%)
 # environment
@@ -145,7 +145,7 @@ PWD = /media/giorgos/CC9686E09686CB02/Documents/SXOLH/Theory of Recitation/Theor
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 8556
+SSH_AGENT_PID = 6282
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -163,7 +163,7 @@ VSCODE_CODE_CACHE_PATH = /home/giorgos/.config/Code/CachedData/c3511e6c69bb39013
 # environment
 LOGNAME = giorgos
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # environment
@@ -203,7 +203,7 @@ GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
 LATEXWORKSHOP_DOCKER_LATEX = 
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-ecda77af-3bd6-470e-ba09-232be9697b7f.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-68340c65-d282-40c4-b044-04ce364e166b.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -290,9 +290,9 @@ GJS_DEBUG_OUTPUT = stderr
 LC_ADDRESS = el_GR.UTF-8
 # environment
 LANG = C
- 
 # environment
-VSCODE_PID = 576191
+ 
+VSCODE_PID = 17692
 # environment
 _CE_CONDA = 
 # variable set hash-table stats:
@@ -362,6 +362,6 @@ GNUmakefile:
 # strcache performance: lookups = 21 / hit rate = 14%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=1/21=5%
-# Finished Make data base on Sat May 21 01:35:09 2022
+# Finished Make data base on Thu Jun  2 21:18:32 2022
 
  

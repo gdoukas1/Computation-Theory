@@ -27,6 +27,8 @@ scalar       { printf("token KW_SCALAR: %s\n",yytext); return KW_SCALAR; }
 
 str          { printf("token KW_STRING: %s\n",yytext); return KW_STRING; }
 
+void         { printf("token KW_VOID: %s\n",yytext); return KW_VOID; }
+
 boolean      { printf("token KW_BOOL: %s\n",yytext); return KW_BOOL; }
 
 True         { printf("token KW_TRUE: %s\n",yytext); return KW_TRUE; }
@@ -115,6 +117,8 @@ endcomp      { printf("token KW_ENDCOMP: %s\n",yytext); return KW_ENDCOMP; }
 "]"        printf("token D_R_BRCK: %s\n", yytext); return ']';
 "{"        printf("token D_L_CRL_BRCK: %s\n", yytext); return '{';
 "}"        printf("token D_R_CRL_BRCK: %s\n", yytext); return '}';
+"#"        printf("token \"#\": %s\n", yytext); return '#';
+"."        printf("token \"DOT\": %s\n", yytext); return '.';
 
 "--"[^\n]*  	/* eat line comments */
 

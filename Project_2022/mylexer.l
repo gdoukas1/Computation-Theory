@@ -23,7 +23,8 @@ STRING        \"{CHARACTER}*\"
 
 integer      return KW_INT;
 scalar       return KW_SCALAR; 
-str          return KW_STRING; 
+str          return KW_STRING;
+void         return KW_VOID; 
 boolean      return KW_BOOL; 
 True         return KW_TRUE; 
 False        return KW_FALSE; 
@@ -85,6 +86,8 @@ endcomp      return KW_ENDCOMP;
 "]"        return ']';
 "{"        return '{';
 "}"        return '}';
+"#"        return '#';
+"."        return '.';
 
 "--"[^\n]*  	/* eat line comments */
 
