@@ -75,9 +75,10 @@
     extern int line_num;
     char* func_buf = "";
     char* func_names = "";
-    int param;
+    int comp_param = 0;
+    int func_param = 0;
 
-#line 81 "myanalyzer.tab.c"
+#line 82 "myanalyzer.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -176,11 +177,11 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 14 "myanalyzer.y"
+#line 15 "myanalyzer.y"
 
     char* crepr;
 
-#line 184 "myanalyzer.tab.c"
+#line 185 "myanalyzer.tab.c"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -560,18 +561,18 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int16 yyrline[] =
 {
-       0,    95,    95,   108,   111,   112,   113,   114,   115,   116,
-     121,   122,   126,   141,   158,   175,   176,   177,   182,   187,
-     188,   189,   190,   191,   192,   196,   200,   201,   202,   203,
-     204,   205,   206,   207,   208,   209,   210,   211,   212,   213,
-     214,   215,   216,   217,   218,   219,   220,   221,   222,   223,
-     224,   225,   226,   227,   228,   229,   235,   236,   241,   242,
-     243,   244,   245,   249,   250,   251,   252,   256,   257,   267,
-     268,   269,   273,   274,   275,   276,   277,   278,   279,   283,
-     287,   288,   289,   290,   291,   292,   296,   297,   298,   299,
-     300,   301,   302,   303,   304,   305,   306,   310,   311,   312,
-     313,   314,   315,   319,   320,   321,   322,   327,   328,   333,
-     334,   335,   336,   337
+       0,    96,    96,   109,   112,   113,   114,   115,   116,   117,
+     122,   123,   127,   142,   159,   176,   177,   178,   183,   191,
+     192,   193,   194,   195,   196,   200,   204,   205,   206,   207,
+     208,   209,   210,   211,   212,   213,   214,   215,   216,   217,
+     218,   219,   220,   221,   222,   223,   224,   225,   226,   227,
+     228,   229,   230,   231,   232,   233,   239,   240,   245,   246,
+     247,   248,   249,   253,   254,   255,   256,   260,   261,   271,
+     272,   273,   277,   278,   279,   280,   281,   282,   283,   287,
+     291,   292,   293,   294,   295,   296,   300,   301,   302,   303,
+     304,   305,   306,   307,   308,   309,   310,   314,   315,   316,
+     317,   318,   319,   323,   324,   325,   326,   331,   332,   337,
+     338,   339,   341,   342
 };
 #endif
 
@@ -1662,7 +1663,7 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 95 "myanalyzer.y"
+#line 96 "myanalyzer.y"
                    { 
 
  /* We have a successful parse! 
@@ -1674,67 +1675,67 @@ yyreduce:
     printf("%s\n\n", (yyvsp[0].crepr));
   }
 }
-#line 1678 "myanalyzer.tab.c"
+#line 1679 "myanalyzer.tab.c"
     break;
 
   case 3:
-#line 108 "myanalyzer.y"
+#line 109 "myanalyzer.y"
                                {(yyval.crepr) = template("%s", (yyvsp[0].crepr));}
-#line 1684 "myanalyzer.tab.c"
+#line 1685 "myanalyzer.tab.c"
     break;
 
   case 4:
-#line 111 "myanalyzer.y"
+#line 112 "myanalyzer.y"
                                      {(yyval.crepr) = template("%s", (yyvsp[0].crepr));}
-#line 1690 "myanalyzer.tab.c"
+#line 1691 "myanalyzer.tab.c"
     break;
 
   case 5:
-#line 112 "myanalyzer.y"
+#line 113 "myanalyzer.y"
                                      {(yyval.crepr) = template("%s[%s]", (yyvsp[-3].crepr), (yyvsp[-1].crepr));}
-#line 1696 "myanalyzer.tab.c"
+#line 1697 "myanalyzer.tab.c"
     break;
 
   case 6:
-#line 113 "myanalyzer.y"
+#line 114 "myanalyzer.y"
                                      {(yyval.crepr) = template("%s[]", (yyvsp[-2].crepr));}
-#line 1702 "myanalyzer.tab.c"
+#line 1703 "myanalyzer.tab.c"
     break;
 
   case 7:
-#line 114 "myanalyzer.y"
+#line 115 "myanalyzer.y"
                                           {(yyval.crepr) = template("%s , %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 1708 "myanalyzer.tab.c"
+#line 1709 "myanalyzer.tab.c"
     break;
 
   case 8:
-#line 115 "myanalyzer.y"
+#line 116 "myanalyzer.y"
                                                      {(yyval.crepr) = template("%s[%s], %s", (yyvsp[-5].crepr), (yyvsp[-3].crepr), (yyvsp[0].crepr));}
-#line 1714 "myanalyzer.tab.c"
+#line 1715 "myanalyzer.tab.c"
     break;
 
   case 9:
-#line 116 "myanalyzer.y"
+#line 117 "myanalyzer.y"
                                                      {(yyval.crepr) = template("%s[], %s", (yyvsp[-4].crepr), (yyvsp[0].crepr));}
-#line 1720 "myanalyzer.tab.c"
+#line 1721 "myanalyzer.tab.c"
     break;
 
   case 10:
-#line 121 "myanalyzer.y"
+#line 122 "myanalyzer.y"
                                             {(yyval.crepr) = template("%s %s;\n", (yyvsp[-1].crepr), (yyvsp[-3].crepr));}
-#line 1726 "myanalyzer.tab.c"
+#line 1727 "myanalyzer.tab.c"
     break;
 
   case 11:
-#line 122 "myanalyzer.y"
+#line 123 "myanalyzer.y"
                                             {(yyval.crepr) = template("%s %s;\n", (yyvsp[-1].crepr), (yyvsp[-3].crepr));}
-#line 1732 "myanalyzer.tab.c"
+#line 1733 "myanalyzer.tab.c"
     break;
 
   case 12:
-#line 127 "myanalyzer.y"
+#line 128 "myanalyzer.y"
             {
-              if (param == 0){
+              if (comp_param == 0){
                 (yyval.crepr) = template("%s(*%s)(SELF );\n",(yyvsp[-4].crepr),(yyvsp[-10].crepr));
                 func_buf = template("%s\n%s %s (SELF ) {\n%s}\n\n", func_buf, (yyvsp[-4].crepr), (yyvsp[-10].crepr), (yyvsp[-2].crepr));} 
               else {
@@ -1746,15 +1747,15 @@ yyreduce:
               else 
                 func_names = template("%s, .%s=%s", func_names, (yyvsp[-10].crepr), (yyvsp[-10].crepr));
             }
-#line 1750 "myanalyzer.tab.c"
+#line 1751 "myanalyzer.tab.c"
     break;
 
   case 13:
-#line 142 "myanalyzer.y"
+#line 143 "myanalyzer.y"
           {
             (yyval.crepr) = template("%s* %s (%s) {\n%s}\n\n", (yyvsp[-4].crepr), (yyvsp[-12].crepr), (yyvsp[-10].crepr), (yyvsp[-2].crepr));
             
-            if (param == 0){
+            if (comp_param == 0){
               (yyval.crepr) = template("%s* (*%s)(SELF );\n", (yyvsp[-4].crepr), (yyvsp[-12].crepr));
               func_buf = template("%s\n%s* %s (SELF ) {\n%s}\n\n", func_buf, (yyvsp[-4].crepr), (yyvsp[-12].crepr), (yyvsp[-2].crepr));} 
             else {
@@ -1766,13 +1767,13 @@ yyreduce:
             else 
               func_names = template("%s, .%s=%s", func_names, (yyvsp[-12].crepr), (yyvsp[-12].crepr));
           }
-#line 1770 "myanalyzer.tab.c"
+#line 1771 "myanalyzer.tab.c"
     break;
 
   case 14:
-#line 159 "myanalyzer.y"
+#line 160 "myanalyzer.y"
           {
-            if (param == 0){
+            if (comp_param == 0){
               (yyval.crepr) = template("void (*%s)(SELF );\n",(yyvsp[-7].crepr));
               func_buf = template("%s\nvoid %s (SELF ) {\n%s}\n\n", func_buf, (yyvsp[-7].crepr), (yyvsp[-2].crepr));} 
             else {
@@ -1784,611 +1785,614 @@ yyreduce:
             else 
               func_names = template("%s, .%s=%s", func_names, (yyvsp[-7].crepr), (yyvsp[-7].crepr));
           }
-#line 1788 "myanalyzer.tab.c"
+#line 1789 "myanalyzer.tab.c"
     break;
 
   case 15:
-#line 175 "myanalyzer.y"
+#line 176 "myanalyzer.y"
                                         {(yyval.crepr) = (yyvsp[0].crepr);}
-#line 1794 "myanalyzer.tab.c"
+#line 1795 "myanalyzer.tab.c"
     break;
 
   case 16:
-#line 176 "myanalyzer.y"
+#line 177 "myanalyzer.y"
                                         {(yyval.crepr) = template("%s%s", (yyvsp[-1].crepr), (yyvsp[0].crepr));}
-#line 1800 "myanalyzer.tab.c"
+#line 1801 "myanalyzer.tab.c"
     break;
 
   case 17:
-#line 177 "myanalyzer.y"
+#line 178 "myanalyzer.y"
                                         {(yyval.crepr) = template("%s%s", (yyvsp[-1].crepr), (yyvsp[0].crepr));}
-#line 1806 "myanalyzer.tab.c"
+#line 1807 "myanalyzer.tab.c"
     break;
 
   case 18:
-#line 182 "myanalyzer.y"
+#line 183 "myanalyzer.y"
                                                       {
-      (yyval.crepr) = template("#define SELF struct %s *self \ntypedef struct %s {\n%s} %s;\n\n%sconst %s ctor_%s = {%s};\n#undef SELF\n\n", (yyvsp[-4].crepr), (yyvsp[-4].crepr), (yyvsp[-2].crepr), (yyvsp[-4].crepr), func_buf, (yyvsp[-4].crepr), (yyvsp[-4].crepr), func_names);}
-#line 1813 "myanalyzer.tab.c"
+      (yyval.crepr) = template("#define SELF struct %s *self \ntypedef struct %s {\n%s} %s;\n\n%sconst %s ctor_%s = {%s};\n#undef SELF\n\n", (yyvsp[-4].crepr), (yyvsp[-4].crepr), (yyvsp[-2].crepr), (yyvsp[-4].crepr), func_buf, (yyvsp[-4].crepr), (yyvsp[-4].crepr), func_names);
+      func_buf = "";
+      func_names = "";
+      comp_param = 0;}
+#line 1817 "myanalyzer.tab.c"
     break;
 
   case 19:
-#line 187 "myanalyzer.y"
+#line 191 "myanalyzer.y"
                                  {(yyval.crepr) = (yyvsp[0].crepr);}
-#line 1819 "myanalyzer.tab.c"
+#line 1823 "myanalyzer.tab.c"
     break;
 
   case 20:
-#line 188 "myanalyzer.y"
+#line 192 "myanalyzer.y"
                                  {(yyval.crepr) = template("%s[%s]", (yyvsp[-3].crepr), (yyvsp[-1].crepr));}
-#line 1825 "myanalyzer.tab.c"
+#line 1829 "myanalyzer.tab.c"
     break;
 
   case 21:
-#line 189 "myanalyzer.y"
+#line 193 "myanalyzer.y"
                                  {(yyval.crepr) = template("%s[]", (yyvsp[-2].crepr));}
-#line 1831 "myanalyzer.tab.c"
+#line 1835 "myanalyzer.tab.c"
     break;
 
   case 22:
-#line 190 "myanalyzer.y"
+#line 194 "myanalyzer.y"
                                  {(yyval.crepr) = template("%s, %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 1837 "myanalyzer.tab.c"
+#line 1841 "myanalyzer.tab.c"
     break;
 
   case 23:
-#line 191 "myanalyzer.y"
+#line 195 "myanalyzer.y"
                                             {(yyval.crepr) = template("%s[%s], %s", (yyvsp[-5].crepr), (yyvsp[-3].crepr), (yyvsp[0].crepr));}
-#line 1843 "myanalyzer.tab.c"
+#line 1847 "myanalyzer.tab.c"
     break;
 
   case 24:
-#line 192 "myanalyzer.y"
+#line 196 "myanalyzer.y"
                                             {(yyval.crepr) = template("%s[], %s", (yyvsp[-4].crepr), (yyvsp[0].crepr));}
-#line 1849 "myanalyzer.tab.c"
+#line 1853 "myanalyzer.tab.c"
     break;
 
   case 25:
-#line 196 "myanalyzer.y"
+#line 200 "myanalyzer.y"
                                                        {(yyval.crepr) = template("const %s %s = %s;\n", (yyvsp[-1].crepr), (yyvsp[-5].crepr), (yyvsp[-3].crepr));}
-#line 1855 "myanalyzer.tab.c"
+#line 1859 "myanalyzer.tab.c"
     break;
 
   case 26:
-#line 200 "myanalyzer.y"
+#line 204 "myanalyzer.y"
                                       {(yyval.crepr) = template("+%s", (yyvsp[0].crepr));}
-#line 1861 "myanalyzer.tab.c"
+#line 1865 "myanalyzer.tab.c"
     break;
 
   case 27:
-#line 201 "myanalyzer.y"
+#line 205 "myanalyzer.y"
                                       {(yyval.crepr) = template("-%s", (yyvsp[0].crepr));}
-#line 1867 "myanalyzer.tab.c"
+#line 1871 "myanalyzer.tab.c"
     break;
 
   case 28:
-#line 202 "myanalyzer.y"
+#line 206 "myanalyzer.y"
                                       {(yyval.crepr) = template("pow(%s, %s)", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 1873 "myanalyzer.tab.c"
+#line 1877 "myanalyzer.tab.c"
     break;
 
   case 29:
-#line 203 "myanalyzer.y"
+#line 207 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s + %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 1879 "myanalyzer.tab.c"
+#line 1883 "myanalyzer.tab.c"
     break;
 
   case 30:
-#line 204 "myanalyzer.y"
+#line 208 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s - %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 1885 "myanalyzer.tab.c"
+#line 1889 "myanalyzer.tab.c"
     break;
 
   case 31:
-#line 205 "myanalyzer.y"
+#line 209 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s * %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 1891 "myanalyzer.tab.c"
+#line 1895 "myanalyzer.tab.c"
     break;
 
   case 32:
-#line 206 "myanalyzer.y"
+#line 210 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s / %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 1897 "myanalyzer.tab.c"
+#line 1901 "myanalyzer.tab.c"
     break;
 
   case 33:
-#line 207 "myanalyzer.y"
+#line 211 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s %% %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 1903 "myanalyzer.tab.c"
+#line 1907 "myanalyzer.tab.c"
     break;
 
   case 34:
-#line 208 "myanalyzer.y"
+#line 212 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s == %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 1909 "myanalyzer.tab.c"
+#line 1913 "myanalyzer.tab.c"
     break;
 
   case 35:
-#line 209 "myanalyzer.y"
+#line 213 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s != %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 1915 "myanalyzer.tab.c"
+#line 1919 "myanalyzer.tab.c"
     break;
 
   case 36:
-#line 210 "myanalyzer.y"
+#line 214 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s < %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 1921 "myanalyzer.tab.c"
+#line 1925 "myanalyzer.tab.c"
     break;
 
   case 37:
-#line 211 "myanalyzer.y"
+#line 215 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s > %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 1927 "myanalyzer.tab.c"
+#line 1931 "myanalyzer.tab.c"
     break;
 
   case 38:
-#line 212 "myanalyzer.y"
+#line 216 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s <= %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 1933 "myanalyzer.tab.c"
+#line 1937 "myanalyzer.tab.c"
     break;
 
   case 39:
-#line 213 "myanalyzer.y"
+#line 217 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s >= %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 1939 "myanalyzer.tab.c"
+#line 1943 "myanalyzer.tab.c"
     break;
 
   case 40:
-#line 214 "myanalyzer.y"
+#line 218 "myanalyzer.y"
                                       {(yyval.crepr) = template("NOT %s", (yyvsp[0].crepr));}
-#line 1945 "myanalyzer.tab.c"
+#line 1949 "myanalyzer.tab.c"
     break;
 
   case 41:
-#line 215 "myanalyzer.y"
+#line 219 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s && %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 1951 "myanalyzer.tab.c"
+#line 1955 "myanalyzer.tab.c"
     break;
 
   case 42:
-#line 216 "myanalyzer.y"
+#line 220 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s | %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 1957 "myanalyzer.tab.c"
+#line 1961 "myanalyzer.tab.c"
     break;
 
   case 43:
-#line 217 "myanalyzer.y"
+#line 221 "myanalyzer.y"
                                       {(yyval.crepr) = template("(%s)", (yyvsp[-1].crepr));}
-#line 1963 "myanalyzer.tab.c"
+#line 1967 "myanalyzer.tab.c"
     break;
 
   case 44:
-#line 218 "myanalyzer.y"
+#line 222 "myanalyzer.y"
                                       {(yyval.crepr) = (yyvsp[0].crepr);}
-#line 1969 "myanalyzer.tab.c"
+#line 1973 "myanalyzer.tab.c"
     break;
 
   case 45:
-#line 219 "myanalyzer.y"
+#line 223 "myanalyzer.y"
                                       {(yyval.crepr) = template("1");}
-#line 1975 "myanalyzer.tab.c"
+#line 1979 "myanalyzer.tab.c"
     break;
 
   case 46:
-#line 220 "myanalyzer.y"
+#line 224 "myanalyzer.y"
                                       {(yyval.crepr) = template("0");}
-#line 1981 "myanalyzer.tab.c"
+#line 1985 "myanalyzer.tab.c"
     break;
 
   case 47:
-#line 221 "myanalyzer.y"
+#line 225 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s[%s]", (yyvsp[-3].crepr), (yyvsp[-1].crepr));}
-#line 1987 "myanalyzer.tab.c"
+#line 1991 "myanalyzer.tab.c"
     break;
 
   case 48:
-#line 222 "myanalyzer.y"
+#line 226 "myanalyzer.y"
                                       {(yyval.crepr) = template("self->%s", (yyvsp[0].crepr));}
-#line 1993 "myanalyzer.tab.c"
+#line 1997 "myanalyzer.tab.c"
     break;
 
   case 49:
-#line 223 "myanalyzer.y"
+#line 227 "myanalyzer.y"
                                       {(yyval.crepr) = template("self->%s[%s]", (yyvsp[-3].crepr), (yyvsp[-1].crepr));}
-#line 1999 "myanalyzer.tab.c"
+#line 2003 "myanalyzer.tab.c"
     break;
 
   case 50:
-#line 224 "myanalyzer.y"
+#line 228 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s.%s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 2005 "myanalyzer.tab.c"
+#line 2009 "myanalyzer.tab.c"
     break;
 
   case 51:
-#line 225 "myanalyzer.y"
+#line 229 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s.%s[%s]", (yyvsp[-5].crepr), (yyvsp[-3].crepr), (yyvsp[-1].crepr));}
-#line 2011 "myanalyzer.tab.c"
+#line 2015 "myanalyzer.tab.c"
     break;
 
   case 52:
-#line 226 "myanalyzer.y"
+#line 230 "myanalyzer.y"
                                       {(yyval.crepr) = (yyvsp[0].crepr);}
-#line 2017 "myanalyzer.tab.c"
+#line 2021 "myanalyzer.tab.c"
     break;
 
   case 53:
-#line 227 "myanalyzer.y"
+#line 231 "myanalyzer.y"
                                       {(yyval.crepr) = (yyvsp[0].crepr);}
-#line 2023 "myanalyzer.tab.c"
+#line 2027 "myanalyzer.tab.c"
     break;
 
   case 54:
-#line 228 "myanalyzer.y"
+#line 232 "myanalyzer.y"
                                       {(yyval.crepr) = (yyvsp[0].crepr);}
-#line 2029 "myanalyzer.tab.c"
+#line 2033 "myanalyzer.tab.c"
     break;
 
   case 55:
-#line 229 "myanalyzer.y"
+#line 233 "myanalyzer.y"
                                       {(yyval.crepr) = (yyvsp[0].crepr);}
-#line 2035 "myanalyzer.tab.c"
+#line 2039 "myanalyzer.tab.c"
     break;
 
   case 56:
-#line 235 "myanalyzer.y"
+#line 239 "myanalyzer.y"
                                    {(yyval.crepr) = template("%s %s;\n", (yyvsp[-1].crepr), (yyvsp[-3].crepr));}
-#line 2041 "myanalyzer.tab.c"
+#line 2045 "myanalyzer.tab.c"
     break;
 
   case 57:
-#line 236 "myanalyzer.y"
+#line 240 "myanalyzer.y"
                                    {(yyval.crepr) = template("%s %s=ctor_%s;\n", (yyvsp[-1].crepr), (yyvsp[-3].crepr), (yyvsp[-1].crepr));}
-#line 2047 "myanalyzer.tab.c"
+#line 2051 "myanalyzer.tab.c"
     break;
 
   case 58:
-#line 241 "myanalyzer.y"
+#line 245 "myanalyzer.y"
                                    {(yyval.crepr) = template("");}
-#line 2053 "myanalyzer.tab.c"
+#line 2057 "myanalyzer.tab.c"
     break;
 
   case 59:
-#line 242 "myanalyzer.y"
+#line 246 "myanalyzer.y"
                                    {(yyval.crepr) = template("%s%s", (yyvsp[-1].crepr), (yyvsp[0].crepr));}
-#line 2059 "myanalyzer.tab.c"
+#line 2063 "myanalyzer.tab.c"
     break;
 
   case 60:
-#line 243 "myanalyzer.y"
+#line 247 "myanalyzer.y"
                                    {(yyval.crepr) = template("%s%s", (yyvsp[-1].crepr), (yyvsp[0].crepr));}
-#line 2065 "myanalyzer.tab.c"
+#line 2069 "myanalyzer.tab.c"
     break;
 
   case 61:
-#line 244 "myanalyzer.y"
+#line 248 "myanalyzer.y"
                                    {(yyval.crepr) = template("%s%s", (yyvsp[-1].crepr), (yyvsp[0].crepr));}
-#line 2071 "myanalyzer.tab.c"
+#line 2075 "myanalyzer.tab.c"
     break;
 
   case 62:
-#line 245 "myanalyzer.y"
+#line 249 "myanalyzer.y"
                                    {(yyval.crepr) = template("%s%s", (yyvsp[-1].crepr), (yyvsp[0].crepr));}
-#line 2077 "myanalyzer.tab.c"
+#line 2081 "myanalyzer.tab.c"
     break;
 
   case 63:
-#line 249 "myanalyzer.y"
+#line 253 "myanalyzer.y"
                                                                                                    {(yyval.crepr) = template("%s %s (%s) {\n%s}\n\n", (yyvsp[-4].crepr), (yyvsp[-10].crepr), (yyvsp[-8].crepr), (yyvsp[-2].crepr));}
-#line 2083 "myanalyzer.tab.c"
+#line 2087 "myanalyzer.tab.c"
     break;
 
   case 64:
-#line 250 "myanalyzer.y"
+#line 254 "myanalyzer.y"
                                                                                                           {(yyval.crepr) = template("%s *%s (%s) {\n%s}\n\n", (yyvsp[-4].crepr), (yyvsp[-12].crepr), (yyvsp[-10].crepr), (yyvsp[-2].crepr));}
-#line 2089 "myanalyzer.tab.c"
+#line 2093 "myanalyzer.tab.c"
     break;
 
   case 65:
-#line 251 "myanalyzer.y"
+#line 255 "myanalyzer.y"
                                                                               {(yyval.crepr) = template("void %s (%s) {\n%s}\n\n", (yyvsp[-7].crepr), (yyvsp[-5].crepr), (yyvsp[-2].crepr));}
-#line 2095 "myanalyzer.tab.c"
+#line 2099 "myanalyzer.tab.c"
     break;
 
   case 66:
-#line 252 "myanalyzer.y"
+#line 256 "myanalyzer.y"
                                                                                                     {(yyval.crepr) = template("%s %s (%s) {\n%s}\n\n", (yyvsp[-4].crepr), (yyvsp[-10].crepr), (yyvsp[-8].crepr), (yyvsp[-2].crepr));}
-#line 2101 "myanalyzer.tab.c"
+#line 2105 "myanalyzer.tab.c"
     break;
 
   case 67:
-#line 256 "myanalyzer.y"
+#line 260 "myanalyzer.y"
                                        {(yyval.crepr) = template("%s(%s)", (yyvsp[-3].crepr), (yyvsp[-1].crepr));}
-#line 2107 "myanalyzer.tab.c"
+#line 2111 "myanalyzer.tab.c"
     break;
 
   case 68:
-#line 258 "myanalyzer.y"
+#line 262 "myanalyzer.y"
           {
-            if (param == 0)
+            if (func_param == 0)
               (yyval.crepr) = template("%s.%s(&%s)", (yyvsp[-5].crepr), (yyvsp[-3].crepr), (yyvsp[-5].crepr));
              else 
               (yyval.crepr) = template("%s.%s(&%s, %s);\n",(yyvsp[-5].crepr),(yyvsp[-3].crepr),(yyvsp[-5].crepr),(yyvsp[-1].crepr));
           }
-#line 2118 "myanalyzer.tab.c"
+#line 2122 "myanalyzer.tab.c"
     break;
 
   case 69:
-#line 267 "myanalyzer.y"
-                                 {(yyval.crepr) = template(""); param = 0;}
-#line 2124 "myanalyzer.tab.c"
+#line 271 "myanalyzer.y"
+                                 {(yyval.crepr) = template(""); func_param = 0;}
+#line 2128 "myanalyzer.tab.c"
     break;
 
   case 70:
-#line 268 "myanalyzer.y"
-                                 {(yyval.crepr) = (yyvsp[0].crepr); param += 1;}
-#line 2130 "myanalyzer.tab.c"
+#line 272 "myanalyzer.y"
+                                 {(yyval.crepr) = (yyvsp[0].crepr); func_param += 1;}
+#line 2134 "myanalyzer.tab.c"
     break;
 
   case 71:
-#line 269 "myanalyzer.y"
+#line 273 "myanalyzer.y"
                                  {(yyval.crepr) = template("%s, %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 2136 "myanalyzer.tab.c"
+#line 2140 "myanalyzer.tab.c"
     break;
 
   case 72:
-#line 273 "myanalyzer.y"
-                                                  {(yyval.crepr) = template(""); param = 0;}
-#line 2142 "myanalyzer.tab.c"
+#line 277 "myanalyzer.y"
+                                                  {(yyval.crepr) = template(""); comp_param = 0;}
+#line 2146 "myanalyzer.tab.c"
     break;
 
   case 73:
-#line 274 "myanalyzer.y"
-                                                  {(yyval.crepr) = template("%s %s", (yyvsp[0].crepr), (yyvsp[-2].crepr)); param += 1;}
-#line 2148 "myanalyzer.tab.c"
+#line 278 "myanalyzer.y"
+                                                  {(yyval.crepr) = template("%s %s", (yyvsp[0].crepr), (yyvsp[-2].crepr)); comp_param += 1;}
+#line 2152 "myanalyzer.tab.c"
     break;
 
   case 74:
-#line 275 "myanalyzer.y"
-                                                  {(yyval.crepr) = template("%s %s", (yyvsp[0].crepr), (yyvsp[-2].crepr)); param += 1;}
-#line 2154 "myanalyzer.tab.c"
+#line 279 "myanalyzer.y"
+                                                  {(yyval.crepr) = template("%s %s", (yyvsp[0].crepr), (yyvsp[-2].crepr)); comp_param += 1;}
+#line 2158 "myanalyzer.tab.c"
     break;
 
   case 75:
-#line 276 "myanalyzer.y"
-                                                  {(yyval.crepr) = template("%s *%s", (yyvsp[0].crepr), (yyvsp[-4].crepr)); param += 1;}
-#line 2160 "myanalyzer.tab.c"
+#line 280 "myanalyzer.y"
+                                                  {(yyval.crepr) = template("%s *%s", (yyvsp[0].crepr), (yyvsp[-4].crepr)); comp_param += 1;}
+#line 2164 "myanalyzer.tab.c"
     break;
 
   case 76:
-#line 277 "myanalyzer.y"
+#line 281 "myanalyzer.y"
                                                            {(yyval.crepr) = template("%s %s, %s", (yyvsp[-2].crepr), (yyvsp[-4].crepr), (yyvsp[0].crepr));}
-#line 2166 "myanalyzer.tab.c"
+#line 2170 "myanalyzer.tab.c"
     break;
 
   case 77:
-#line 278 "myanalyzer.y"
+#line 282 "myanalyzer.y"
                                                             {(yyval.crepr) = template("%s %s, %s", (yyvsp[-2].crepr), (yyvsp[-4].crepr), (yyvsp[0].crepr));}
-#line 2172 "myanalyzer.tab.c"
+#line 2176 "myanalyzer.tab.c"
     break;
 
   case 78:
-#line 279 "myanalyzer.y"
+#line 283 "myanalyzer.y"
                                                            {(yyval.crepr) = template("%s *%s, %s", (yyvsp[-2].crepr), (yyvsp[-6].crepr), (yyvsp[0].crepr));}
-#line 2178 "myanalyzer.tab.c"
+#line 2182 "myanalyzer.tab.c"
     break;
 
   case 79:
-#line 283 "myanalyzer.y"
+#line 287 "myanalyzer.y"
                                                                {(yyval.crepr) = template("int main() {\n%s}\n", (yyvsp[-2].crepr));}
-#line 2184 "myanalyzer.tab.c"
+#line 2188 "myanalyzer.tab.c"
     break;
 
   case 80:
-#line 287 "myanalyzer.y"
+#line 291 "myanalyzer.y"
                                       {(yyval.crepr) = template("\n");}
-#line 2190 "myanalyzer.tab.c"
+#line 2194 "myanalyzer.tab.c"
     break;
 
   case 81:
-#line 288 "myanalyzer.y"
+#line 292 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s%s", (yyvsp[-1].crepr), (yyvsp[0].crepr));}
-#line 2196 "myanalyzer.tab.c"
+#line 2200 "myanalyzer.tab.c"
     break;
 
   case 82:
-#line 289 "myanalyzer.y"
+#line 293 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s%s", (yyvsp[-1].crepr), (yyvsp[0].crepr));}
-#line 2202 "myanalyzer.tab.c"
+#line 2206 "myanalyzer.tab.c"
     break;
 
   case 83:
-#line 290 "myanalyzer.y"
+#line 294 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s%s", (yyvsp[-1].crepr), (yyvsp[0].crepr));}
-#line 2208 "myanalyzer.tab.c"
+#line 2212 "myanalyzer.tab.c"
     break;
 
   case 84:
-#line 291 "myanalyzer.y"
+#line 295 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s%s", (yyvsp[-1].crepr), (yyvsp[0].crepr));}
-#line 2214 "myanalyzer.tab.c"
+#line 2218 "myanalyzer.tab.c"
     break;
 
   case 85:
-#line 292 "myanalyzer.y"
+#line 296 "myanalyzer.y"
                                       {(yyval.crepr) = template("%s%s", (yyvsp[-1].crepr), (yyvsp[0].crepr));}
-#line 2220 "myanalyzer.tab.c"
+#line 2224 "myanalyzer.tab.c"
     break;
 
   case 86:
-#line 296 "myanalyzer.y"
+#line 300 "myanalyzer.y"
                                                                         {(yyval.crepr) = template("%s;\n", (yyvsp[-1].crepr));}
-#line 2226 "myanalyzer.tab.c"
+#line 2230 "myanalyzer.tab.c"
     break;
 
   case 87:
-#line 297 "myanalyzer.y"
+#line 301 "myanalyzer.y"
                                                                                       {(yyval.crepr) = template("for (%s = %s; %s<%s; %s+=1){\n%s}\n", (yyvsp[-10].crepr), (yyvsp[-7].crepr), (yyvsp[-10].crepr), (yyvsp[-5].crepr), (yyvsp[-10].crepr), (yyvsp[-2].crepr));}
-#line 2232 "myanalyzer.tab.c"
+#line 2236 "myanalyzer.tab.c"
     break;
 
   case 88:
-#line 298 "myanalyzer.y"
+#line 302 "myanalyzer.y"
                                                                                       {(yyval.crepr) = template("for (%s = %s; %s<%s; %s+=%s){\n%s}\n", (yyvsp[-12].crepr), (yyvsp[-9].crepr), (yyvsp[-12].crepr), (yyvsp[-7].crepr), (yyvsp[-12].crepr), (yyvsp[-5].crepr), (yyvsp[-2].crepr));}
-#line 2238 "myanalyzer.tab.c"
+#line 2242 "myanalyzer.tab.c"
     break;
 
   case 89:
-#line 299 "myanalyzer.y"
+#line 303 "myanalyzer.y"
                                                                                       {(yyval.crepr) = template("for (%s = %s; %s<%s; %s+=1){\n%s}\n", (yyvsp[-10].crepr), (yyvsp[-7].crepr), (yyvsp[-10].crepr), (yyvsp[-5].crepr), (yyvsp[-10].crepr), (yyvsp[-2].crepr));}
-#line 2244 "myanalyzer.tab.c"
+#line 2248 "myanalyzer.tab.c"
     break;
 
   case 90:
-#line 300 "myanalyzer.y"
+#line 304 "myanalyzer.y"
                                                                                       {(yyval.crepr) = template("for (%s = %s; %s<%s; %s+=%s){\n%s}\n", (yyvsp[-12].crepr), (yyvsp[-9].crepr), (yyvsp[-12].crepr), (yyvsp[-7].crepr), (yyvsp[-12].crepr), (yyvsp[-5].crepr), (yyvsp[-2].crepr));}
-#line 2250 "myanalyzer.tab.c"
+#line 2254 "myanalyzer.tab.c"
     break;
 
   case 91:
-#line 301 "myanalyzer.y"
+#line 305 "myanalyzer.y"
                                                             {(yyval.crepr) = template("while (%s){\n%s}\n", (yyvsp[-5].crepr), (yyvsp[-2].crepr));}
-#line 2256 "myanalyzer.tab.c"
+#line 2260 "myanalyzer.tab.c"
     break;
 
   case 92:
-#line 302 "myanalyzer.y"
+#line 306 "myanalyzer.y"
                                                             {(yyval.crepr) = template("break;\n");}
-#line 2262 "myanalyzer.tab.c"
+#line 2266 "myanalyzer.tab.c"
     break;
 
   case 93:
-#line 303 "myanalyzer.y"
+#line 307 "myanalyzer.y"
                                                             {(yyval.crepr) = template("continue;\n");}
-#line 2268 "myanalyzer.tab.c"
+#line 2272 "myanalyzer.tab.c"
     break;
 
   case 94:
-#line 304 "myanalyzer.y"
+#line 308 "myanalyzer.y"
                                                             {(yyval.crepr) = template("return;\n");}
-#line 2274 "myanalyzer.tab.c"
+#line 2278 "myanalyzer.tab.c"
     break;
 
   case 95:
-#line 305 "myanalyzer.y"
+#line 309 "myanalyzer.y"
                                                             {(yyval.crepr) = template("return %s;\n", (yyvsp[-1].crepr));}
-#line 2280 "myanalyzer.tab.c"
+#line 2284 "myanalyzer.tab.c"
     break;
 
   case 96:
-#line 306 "myanalyzer.y"
+#line 310 "myanalyzer.y"
                                                             {(yyval.crepr) = template("%s;\n", (yyvsp[-1].crepr));}
-#line 2286 "myanalyzer.tab.c"
+#line 2290 "myanalyzer.tab.c"
     break;
 
   case 97:
-#line 310 "myanalyzer.y"
+#line 314 "myanalyzer.y"
                                        {(yyval.crepr) = template("%s = %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 2292 "myanalyzer.tab.c"
+#line 2296 "myanalyzer.tab.c"
     break;
 
   case 98:
-#line 311 "myanalyzer.y"
+#line 315 "myanalyzer.y"
                                        {(yyval.crepr) = template("%s += %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 2298 "myanalyzer.tab.c"
+#line 2302 "myanalyzer.tab.c"
     break;
 
   case 99:
-#line 312 "myanalyzer.y"
+#line 316 "myanalyzer.y"
                                        {(yyval.crepr) = template("%s -= %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 2304 "myanalyzer.tab.c"
+#line 2308 "myanalyzer.tab.c"
     break;
 
   case 100:
-#line 313 "myanalyzer.y"
+#line 317 "myanalyzer.y"
                                        {(yyval.crepr) = template("%s *= %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 2310 "myanalyzer.tab.c"
+#line 2314 "myanalyzer.tab.c"
     break;
 
   case 101:
-#line 314 "myanalyzer.y"
+#line 318 "myanalyzer.y"
                                        {(yyval.crepr) = template("%s /= %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 2316 "myanalyzer.tab.c"
+#line 2320 "myanalyzer.tab.c"
     break;
 
   case 102:
-#line 315 "myanalyzer.y"
+#line 319 "myanalyzer.y"
                                        {(yyval.crepr) = template("%s %= %s", (yyvsp[-2].crepr), (yyvsp[0].crepr));}
-#line 2322 "myanalyzer.tab.c"
+#line 2326 "myanalyzer.tab.c"
     break;
 
   case 103:
-#line 319 "myanalyzer.y"
+#line 323 "myanalyzer.y"
                     {(yyval.crepr) = template("%s", (yyvsp[0].crepr));}
-#line 2328 "myanalyzer.tab.c"
+#line 2332 "myanalyzer.tab.c"
     break;
 
   case 104:
-#line 320 "myanalyzer.y"
+#line 324 "myanalyzer.y"
                     {(yyval.crepr) = template("%s%s", (yyvsp[-1].crepr), (yyvsp[0].crepr));}
-#line 2334 "myanalyzer.tab.c"
+#line 2338 "myanalyzer.tab.c"
     break;
 
   case 105:
-#line 321 "myanalyzer.y"
+#line 325 "myanalyzer.y"
                     {(yyval.crepr) = template("%s", (yyvsp[0].crepr));}
-#line 2340 "myanalyzer.tab.c"
+#line 2344 "myanalyzer.tab.c"
     break;
 
   case 106:
-#line 322 "myanalyzer.y"
+#line 326 "myanalyzer.y"
                     {(yyval.crepr) = template("%s%s", (yyvsp[-1].crepr), (yyvsp[0].crepr));}
-#line 2346 "myanalyzer.tab.c"
+#line 2350 "myanalyzer.tab.c"
     break;
 
   case 107:
-#line 327 "myanalyzer.y"
+#line 331 "myanalyzer.y"
                                                                           {(yyval.crepr) = template("if (%s){\n%s}\n", (yyvsp[-5].crepr), (yyvsp[-2].crepr));}
-#line 2352 "myanalyzer.tab.c"
+#line 2356 "myanalyzer.tab.c"
     break;
 
   case 108:
-#line 328 "myanalyzer.y"
+#line 332 "myanalyzer.y"
                                                                           {(yyval.crepr) = template("if (%s){\n%s} else {\n%s}\n", (yyvsp[-8].crepr), (yyvsp[-5].crepr), (yyvsp[-2].crepr));}
-#line 2358 "myanalyzer.tab.c"
+#line 2362 "myanalyzer.tab.c"
     break;
 
   case 109:
-#line 333 "myanalyzer.y"
+#line 337 "myanalyzer.y"
                         {(yyval.crepr) = template("int");}
-#line 2364 "myanalyzer.tab.c"
+#line 2368 "myanalyzer.tab.c"
     break;
 
   case 110:
-#line 334 "myanalyzer.y"
+#line 338 "myanalyzer.y"
                         {(yyval.crepr) = template("int");}
-#line 2370 "myanalyzer.tab.c"
+#line 2374 "myanalyzer.tab.c"
     break;
 
   case 111:
-#line 335 "myanalyzer.y"
+#line 339 "myanalyzer.y"
                         {(yyval.crepr) = template("double");}
-#line 2376 "myanalyzer.tab.c"
+#line 2380 "myanalyzer.tab.c"
     break;
 
   case 112:
-#line 336 "myanalyzer.y"
-                        {(yyval.crepr) = template("char*");}
-#line 2382 "myanalyzer.tab.c"
+#line 341 "myanalyzer.y"
+                        {(yyval.crepr) = template("StringType");}
+#line 2386 "myanalyzer.tab.c"
     break;
 
   case 113:
-#line 337 "myanalyzer.y"
+#line 342 "myanalyzer.y"
                         {(yyval.crepr) = template("void");}
-#line 2388 "myanalyzer.tab.c"
+#line 2392 "myanalyzer.tab.c"
     break;
 
 
-#line 2392 "myanalyzer.tab.c"
+#line 2396 "myanalyzer.tab.c"
 
       default: break;
     }
@@ -2620,7 +2624,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 339 "myanalyzer.y"
+#line 344 "myanalyzer.y"
 
 int main () {
   if ( yyparse() == 0 )

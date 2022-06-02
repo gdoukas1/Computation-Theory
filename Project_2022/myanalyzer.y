@@ -6,7 +6,8 @@
     extern int line_num;
     char* func_buf = "";
     char* func_names = "";
-    int param;
+    int comp_param = 0;
+    int func_param = 0;
 %}
 
 
@@ -125,7 +126,7 @@ comp_var:
 comp_func_decl:
             KW_DEF IDENTIFIER '(' parameters ')' '-' OP_GRT data_type ':' func_body KW_ENDDEF ';'  
             {
-              if (param == 0){
+              if (comp_param == 0){
                 $$ = template("%s(*%s)(SELF );\n",$8,$2);
                 func_buf = template("%s\n%s %s (SELF ) {\n%s}\n\n", func_buf, $8, $2, $10);} 
               else {
@@ -142,7 +143,7 @@ comp_func_decl:
           {
             $$ = template("%s* %s (%s) {\n%s}\n\n", $10, $2, $4, $12);
             
-            if (param == 0){
+            if (comp_param == 0){
               $$ = template("%s* (*%s)(SELF );\n", $10, $2);
               func_buf = template("%s\n%s* %s (SELF ) {\n%s}\n\n", func_buf, $10, $2, $12);} 
             else {
@@ -157,7 +158,7 @@ comp_func_decl:
           
           | KW_DEF IDENTIFIER '(' parameters ')' ':' func_body KW_ENDDEF ';' 
           {
-            if (param == 0){
+            if (comp_param == 0){
               $$ = template("void (*%s)(SELF );\n",$2);
               func_buf = template("%s\nvoid %s (SELF ) {\n%s}\n\n", func_buf, $2, $7);} 
             else {
@@ -180,7 +181,10 @@ comp_body:
 
 comp: 
       KW_COMP IDENTIFIER ':' comp_body KW_ENDCOMP ';' {
-      $$ = template("#define SELF struct %s *self \ntypedef struct %s {\n%s} %s;\n\n%sconst %s ctor_%s = {%s};\n#undef SELF\n\n", $2, $2, $4, $2, func_buf, $2, $2, func_names);}
+      $$ = template("#define SELF struct %s *self \ntypedef struct %s {\n%s} %s;\n\n%sconst %s ctor_%s = {%s};\n#undef SELF\n\n", $2, $2, $4, $2, func_buf, $2, $2, func_names);
+      func_buf = "";
+      func_names = "";
+      comp_param = 0;}
 
 
 ident:
@@ -256,7 +260,7 @@ func_call:
             IDENTIFIER'('func_input')' {$$ = template("%s(%s)", $1, $3);}
           | expr '.'  IDENTIFIER '('func_input')'  
           {
-            if (param == 0)
+            if (func_param == 0)
               $$ = template("%s.%s(&%s)", $1, $3, $1);
              else 
               $$ = template("%s.%s(&%s, %s);\n",$1,$3,$1,$5);
@@ -264,16 +268,16 @@ func_call:
           ;
 
 func_input:
-            %empty               {$$ = template(""); param = 0;}
-          | expr                 {$$ = $1; param += 1;}
+            %empty               {$$ = template(""); func_param = 0;}
+          | expr                 {$$ = $1; func_param += 1;}
           | expr ',' func_input  {$$ = template("%s, %s", $1, $3);}
           ;
 
 parameters:
-            %empty                                {$$ = template(""); param = 0;}
-          | IDENTIFIER ':' data_type              {$$ = template("%s %s", $3, $1); param += 1;}
-          | IDENTIFIER ':' IDENTIFIER             {$$ = template("%s %s", $3, $1); param += 1;}
-          | IDENTIFIER '['']'':' data_type        {$$ = template("%s *%s", $5, $1); param += 1;}
+            %empty                                {$$ = template(""); comp_param = 0;}
+          | IDENTIFIER ':' data_type              {$$ = template("%s %s", $3, $1); comp_param += 1;}
+          | IDENTIFIER ':' IDENTIFIER             {$$ = template("%s %s", $3, $1); comp_param += 1;}
+          | IDENTIFIER '['']'':' data_type        {$$ = template("%s *%s", $5, $1); comp_param += 1;}
           | IDENTIFIER ':' data_type ',' parameters        {$$ = template("%s %s, %s", $3, $1, $5);}
           | IDENTIFIER ':' IDENTIFIER ',' parameters        {$$ = template("%s %s, %s", $3, $1, $5);}
           | IDENTIFIER '['']' ':' data_type ',' parameters {$$ = template("%s *%s, %s", $5, $1, $7);}
@@ -333,7 +337,7 @@ data_type:
             KW_BOOL     {$$ = template("int");}
           | KW_INT      {$$ = template("int");}
           | KW_SCALAR   {$$ = template("double");} 
-          | KW_STRING   {$$ = template("char*");}
+          | KW_STRING   {$$ = template("StringType");}
           | KW_VOID     {$$ = template("void");}
 
 %%

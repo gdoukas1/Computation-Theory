@@ -7,12 +7,12 @@ myanalyzer.tab.c:
 	bison -d -v -r all myanalyzer.y
 
 lex.yy.c:
-	flex test/mylexer_test.l 
-	#flex mylexer.l 
+	#flex test/mylexer_test.l 
+	flex mylexer.l 
 clean:
 	rm lex.yy.c myanalyzer.tab.c myanalyzer.tab.h  myanalyzer.output mycompiler
 
 tests:
 	./mycompiler < test/bookstore.th > output.c  
 	#useless, qsort, prime, qsortWithComp , bookstore
-	#gcc output.c -o program
+	gcc output.c -o program

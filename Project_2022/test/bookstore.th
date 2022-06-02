@@ -96,6 +96,7 @@ comp Bookstore:
   enddef;
 
   def printBookStoreBooks():
+    i: integer;
     for i in [0 : #numOfBooks]:
       #listOfBooks[i].printBook();
     endfor;
@@ -105,6 +106,7 @@ comp Bookstore:
     total: scalar;
     total = 0;
 
+    i:integer;
     for i in [0 : #numOfOrders]:
       if (#listOfOrders[i].#delivered):
         total = total + #listOfOrders[i].#quantity * #listOfOrders[i].#book.#price;      

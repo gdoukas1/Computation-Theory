@@ -559,8 +559,8 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "test/mylexer_test.l"
-#line 2 "test/mylexer_test.l"
+#line 1 "mylexer.l"
+#line 2 "mylexer.l"
     #include <stdio.h>
     #include <string.h>
     #include "myanalyzer.tab.h"
@@ -787,7 +787,7 @@ YY_DECL
 		}
 
 	{
-#line 22 "test/mylexer_test.l"
+#line 22 "mylexer.l"
 
 
 #line 794 "lex.yy.c"
@@ -849,359 +849,359 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 24 "test/mylexer_test.l"
-{ printf("token KW_INT: %s\n",yytext); return KW_INT; }
+#line 24 "mylexer.l"
+return KW_INT;
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 26 "test/mylexer_test.l"
-{ printf("token KW_SCALAR: %s\n",yytext); return KW_SCALAR; }
+#line 25 "mylexer.l"
+return KW_SCALAR; 
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 28 "test/mylexer_test.l"
-{ printf("token KW_STRING: %s\n",yytext); return KW_STRING; }
+#line 26 "mylexer.l"
+return KW_STRING;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 30 "test/mylexer_test.l"
-{ printf("token KW_VOID: %s\n",yytext); return KW_VOID; }
+#line 27 "mylexer.l"
+return KW_VOID; 
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 32 "test/mylexer_test.l"
-{ printf("token KW_BOOL: %s\n",yytext); return KW_BOOL; }
+#line 28 "mylexer.l"
+return KW_BOOL; 
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 34 "test/mylexer_test.l"
-{ printf("token KW_TRUE: %s\n",yytext); return KW_TRUE; }
+#line 29 "mylexer.l"
+return KW_TRUE; 
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 36 "test/mylexer_test.l"
-{ printf("token KW_FALSE: %s\n",yytext); return KW_FALSE; }
+#line 30 "mylexer.l"
+return KW_FALSE; 
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 38 "test/mylexer_test.l"
-{ printf("token KW_CONST: %s\n",yytext); return KW_CONST; }
+#line 31 "mylexer.l"
+return KW_CONST; 
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 40 "test/mylexer_test.l"
-{ printf("token KW_IF: %s\n",yytext); return KW_IF; }
+#line 32 "mylexer.l"
+return KW_IF;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 42 "test/mylexer_test.l"
-{ printf("token KW_ELSE: %s\n",yytext); return KW_ELSE; }
+#line 33 "mylexer.l"
+return KW_ELSE;
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 44 "test/mylexer_test.l"
-{ printf("token KW_ENDIF: %s\n",yytext); return KW_ENDIF; }                     
+#line 34 "mylexer.l"
+return KW_ENDIF;                  
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 46 "test/mylexer_test.l"
-{ printf("token KW_FOR: %s\n",yytext); return KW_FOR; }
+#line 35 "mylexer.l"
+return KW_FOR; 
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 48 "test/mylexer_test.l"
-{ printf("token KW_IN: %s\n",yytext); return KW_IN; }
+#line 36 "mylexer.l"
+return KW_IN; 
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 50 "test/mylexer_test.l"
-{ printf("token KW_ENDFOR: %s\n",yytext); return KW_ENDFOR; }
+#line 37 "mylexer.l"
+return KW_ENDFOR;
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 52 "test/mylexer_test.l"
-{ printf("token KW_WHILE: %s\n",yytext); return KW_WHILE; }
+#line 38 "mylexer.l"
+return KW_WHILE;
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 54 "test/mylexer_test.l"
-{ printf("token KW_ENDWHILE: %s\n",yytext); return KW_ENDWHILE; }
+#line 39 "mylexer.l"
+return KW_ENDWHILE; 
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 56 "test/mylexer_test.l"
-{ printf("token KW_BREAK: %s\n",yytext); return KW_BREAK; }
+#line 40 "mylexer.l"
+return KW_BREAK; 
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 58 "test/mylexer_test.l"
-{ printf("token KW_CONTINUE: %s\n",yytext); return KW_CONTINUE; }
+#line 41 "mylexer.l"
+return KW_CONTINUE;
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 60 "test/mylexer_test.l"
-{ printf("token KW_NOT: %s\n",yytext); return KW_NOT; }
+#line 42 "mylexer.l"
+return KW_NOT;
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 62 "test/mylexer_test.l"
-{ printf("token KW_AND: %s\n",yytext); return KW_AND; }
+#line 43 "mylexer.l"
+return KW_AND; 
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 64 "test/mylexer_test.l"
-{ printf("token KW_OR: %s\n",yytext); return KW_OR; }
+#line 44 "mylexer.l"
+return KW_OR;
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 66 "test/mylexer_test.l"
-{ printf("token KW_DEF: %s\n",yytext); return KW_DEF; }
+#line 45 "mylexer.l"
+return KW_DEF;
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 68 "test/mylexer_test.l"
-{ printf("token KW_ENDDEF: %s\n",yytext); return KW_ENDDEF; }
+#line 46 "mylexer.l"
+return KW_ENDDEF;
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 70 "test/mylexer_test.l"
-{ printf("token KW_MAIN: %s\n",yytext); return KW_MAIN; } 
+#line 47 "mylexer.l"
+return KW_MAIN;
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 72 "test/mylexer_test.l"
-{ printf("token KW_RETURN: %s\n",yytext); return KW_RETURN; }
+#line 48 "mylexer.l"
+return KW_RETURN;
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 74 "test/mylexer_test.l"
-{ printf("token KW_COMP: %s\n",yytext); return KW_COMP; } 
+#line 49 "mylexer.l"
+return KW_COMP;
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 76 "test/mylexer_test.l"
-{ printf("token KW_ENDCOMP: %s\n",yytext); return KW_ENDCOMP; } 
+#line 50 "mylexer.l"
+return KW_ENDCOMP;
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 80 "test/mylexer_test.l"
-{ printf("token IDENTIFIER: %s\n",yytext); yylval.crepr = strdup(yytext); return IDENTIFIER; }
+#line 53 "mylexer.l"
+{ yylval.crepr = strdup(yytext); return IDENTIFIER; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 82 "test/mylexer_test.l"
-{ printf("token POSINT: %s\n",yytext); yylval.crepr = strdup(yytext); return POSINT; }
+#line 54 "mylexer.l"
+{ yylval.crepr = strdup(yytext); return POSINT; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 84 "test/mylexer_test.l"
-{ printf("token REAL: %s\n",yytext); yylval.crepr = strdup(yytext); return REAL; }
+#line 55 "mylexer.l"
+{ yylval.crepr = strdup(yytext); return REAL; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 86 "test/mylexer_test.l"
-{ printf("token STRING: %s\n",yytext); yylval.crepr = strdup(yytext); return STRING; }
+#line 56 "mylexer.l"
+{ yylval.crepr = strdup(yytext); return STRING; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 90 "test/mylexer_test.l"
-{ printf("token OP_ASGN: %s\n", yytext); return '='; }
+#line 59 "mylexer.l"
+return '='; 
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 91 "test/mylexer_test.l"
-{ printf("token OP_ASGN_ADD: %s\n", yytext); return OP_ASGN_ADD; }
+#line 60 "mylexer.l"
+return OP_ASGN_ADD; 
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 92 "test/mylexer_test.l"
-{ printf("token OP_ASGN_SUB: %s\n", yytext); return OP_ASGN_SUB; }
+#line 61 "mylexer.l"
+return OP_ASGN_SUB; 
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 93 "test/mylexer_test.l"
-{ printf("token OP_ASGN_MUL: %s\n", yytext); return OP_ASGN_MUL; }
+#line 62 "mylexer.l"
+return OP_ASGN_MUL;
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 94 "test/mylexer_test.l"
-{ printf("token OP_ASGN_DIV: %s\n", yytext); return OP_ASGN_DIV; }
+#line 63 "mylexer.l"
+return OP_ASGN_DIV;
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 95 "test/mylexer_test.l"
-{ printf("token OP_ASGN_MOD: %s\n", yytext); return OP_ASGN_MOD; }
+#line 64 "mylexer.l"
+return OP_ASGN_MOD; 
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 97 "test/mylexer_test.l"
-{ printf("token OP_ADD: %s\n", yytext); return '+'; }
+#line 66 "mylexer.l"
+return '+'; 
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 98 "test/mylexer_test.l"
-{ printf("token OP_SUB: %s\n", yytext); return '-'; }
+#line 67 "mylexer.l"
+return '-'; 
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 99 "test/mylexer_test.l"
-{ printf("token OP_MUL: %s\n", yytext); return '*'; }
+#line 68 "mylexer.l"
+return '*'; 
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 100 "test/mylexer_test.l"
-{ printf("token OP_DIV: %s\n", yytext); return '/'; }
+#line 69 "mylexer.l"
+return '/'; 
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 101 "test/mylexer_test.l"
-{ printf("token OP_MOD: %s\n", yytext); return '%'; }
+#line 70 "mylexer.l"
+return '%'; 
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 102 "test/mylexer_test.l"
-{ printf("token OP_POWER: %s\n", yytext); return OP_POWER; }
+#line 71 "mylexer.l"
+return OP_POWER; 
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 104 "test/mylexer_test.l"
-{ printf("token OP_EQUALS: %s\n", yytext); return OP_EQUALS; }
+#line 73 "mylexer.l"
+return OP_EQUALS; 
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 105 "test/mylexer_test.l"
-{ printf("token OP_NOT_EQ: %s\n", yytext); return OP_NOT_EQ; }
+#line 74 "mylexer.l"
+return OP_NOT_EQ;
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 106 "test/mylexer_test.l"
-{ printf("token OP_LS: %s\n", yytext); return OP_LS; }
+#line 75 "mylexer.l"
+return OP_LS; 
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 107 "test/mylexer_test.l"
-{ printf("token OP_LS_EQ: %s\n", yytext); return OP_LS_EQ; }
+#line 76 "mylexer.l"
+return OP_LS_EQ; 
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 108 "test/mylexer_test.l"
-{ printf("token OP_GRT: %s\n", yytext); return OP_GRT; }
+#line 77 "mylexer.l"
+return OP_GRT; 
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 109 "test/mylexer_test.l"
-{ printf("token OP_GRT_EQ: %s\n", yytext); return OP_GRT_EQ; }
+#line 78 "mylexer.l"
+return OP_GRT_EQ; 
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 111 "test/mylexer_test.l"
-printf("token D_SEMCOL: %s\n", yytext); return ';';
+#line 80 "mylexer.l"
+return ';';
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 112 "test/mylexer_test.l"
-printf("token D_COLON: %s\n", yytext); return ':';
+#line 81 "mylexer.l"
+return ':';
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 113 "test/mylexer_test.l"
-printf("token D_L_PARENTH: %s\n", yytext); return '(';
+#line 82 "mylexer.l"
+return '(';
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 114 "test/mylexer_test.l"
-printf("token D_R_PARENTH: %s\n", yytext); return ')'; 
+#line 83 "mylexer.l"
+return ')'; 
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 115 "test/mylexer_test.l"
-printf("token D_COMMA: %s\n", yytext); return ',';
+#line 84 "mylexer.l"
+return ',';
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 116 "test/mylexer_test.l"
-printf("token D_L_BRCK: %s\n", yytext); return '[';
+#line 85 "mylexer.l"
+return '[';
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 117 "test/mylexer_test.l"
-printf("token D_R_BRCK: %s\n", yytext); return ']';
+#line 86 "mylexer.l"
+return ']';
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 118 "test/mylexer_test.l"
-printf("token D_L_CRL_BRCK: %s\n", yytext); return '{';
+#line 87 "mylexer.l"
+return '{';
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 119 "test/mylexer_test.l"
-printf("token D_R_CRL_BRCK: %s\n", yytext); return '}';
+#line 88 "mylexer.l"
+return '}';
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 120 "test/mylexer_test.l"
-printf("token \"#\": %s\n", yytext); return '#';
+#line 89 "mylexer.l"
+return '#';
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 121 "test/mylexer_test.l"
-printf("token \"DOT\": %s\n", yytext); return '.';
+#line 90 "mylexer.l"
+return '.';
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 123 "test/mylexer_test.l"
+#line 92 "mylexer.l"
 /* eat line comments */
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 125 "test/mylexer_test.l"
+#line 94 "mylexer.l"
 {BEGIN(comment); printf("Comment started at line: %d\n", line_num);}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 126 "test/mylexer_test.l"
+#line 95 "mylexer.l"
 /* eat anything that's not a '*' */
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 127 "test/mylexer_test.l"
+#line 96 "mylexer.l"
 /* eat up '*'s not followed by '/'s */
 	YY_BREAK
 case 65:
 /* rule 65 can match eol */
 YY_RULE_SETUP
-#line 128 "test/mylexer_test.l"
+#line 97 "mylexer.l"
 ++line_num;
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 129 "test/mylexer_test.l"
+#line 98 "mylexer.l"
 {BEGIN(INITIAL); printf("Comment ended at line: %d\n", line_num);}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 131 "test/mylexer_test.l"
+#line 100 "mylexer.l"
 /* skip whitespace */
 	YY_BREAK
 case 68:
 /* rule 68 can match eol */
 YY_RULE_SETUP
-#line 132 "test/mylexer_test.l"
+#line 101 "mylexer.l"
 ++line_num;
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(comment):
-#line 134 "test/mylexer_test.l"
+#line 103 "mylexer.l"
 return EOF;
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 136 "test/mylexer_test.l"
+#line 105 "mylexer.l"
 { yyerror("Lexical Error in line %d. Unrecognized literal '%s'\n",line_num, yytext); }
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 138 "test/mylexer_test.l"
+#line 107 "mylexer.l"
 ECHO;
 	YY_BREAK
 #line 1208 "lex.yy.c"
@@ -2207,6 +2207,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 138 "test/mylexer_test.l"
+#line 107 "mylexer.l"
 
 
