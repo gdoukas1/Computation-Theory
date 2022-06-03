@@ -22,7 +22,7 @@ clean_tests:
 	rm output.c program
 
 tests:
-	./mycompiler < test/prime.th > output.c \
+	./mycompiler < test/qsort.th > output.c \
 	#helloworld, useless, prime, qsort, qsortWithComp, bookstore, wrong \
 	gcc output.c -o program \
 

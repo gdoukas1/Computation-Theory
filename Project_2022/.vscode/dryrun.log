@@ -1,0 +1,8 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/media/giorgos/CC9686E09686CB02/Documents/SXOLH/Theory of Recitation/Theory of Recitation 2022/Project_2022'
+bison -d -v -r all myanalyzer.y
+#flex test/mylexer_test.l 
+flex mylexer.l 
+gcc -o mycompiler lex.yy.c myanalyzer.tab.c cgen.c -lfl
+make: Leaving directory '/media/giorgos/CC9686E09686CB02/Documents/SXOLH/Theory of Recitation/Theory of Recitation 2022/Project_2022'
+ 
