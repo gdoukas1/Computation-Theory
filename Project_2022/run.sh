@@ -2,4 +2,5 @@
 
 make clean 
 make
-make tests
+#make tests
+make correct

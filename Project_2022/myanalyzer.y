@@ -88,7 +88,7 @@
 %left  '+' '-'
 %left  '*' '/' '%'
 
-%right OP_SIGN               //override gia telestes proshmou
+%right OP_SIGN          //override gia telestes proshmou
 %left POSINT
 %left  '(' ')' '[' ']' '.'
 

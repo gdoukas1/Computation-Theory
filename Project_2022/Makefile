@@ -19,19 +19,15 @@ clean:
 		
 
 clean_tests: 
-	rm output.c\
-		program\
-		correct1.c\
-		correct1\
-		correct2.c\
-		correct2
+	rm output.c program
 
 tests:
-	#./mycompiler < test/bookstore.th > output.c  
-	#useless, prime, qsort, qsortWithComp, bookstore
-	#gcc output.c -o program
+	./mycompiler < test/prime.th > output.c \
+	#helloworld, useless, prime, qsort, qsortWithComp, bookstore, wrong \
+	gcc output.c -o program \
 
-	#./mycompiler < correct1.th > correct1.c
-	#./mycompiler < correct2.th > correct2.c
-	#gcc correct1.c -o correct1 
-	#gcc correct2.c -o correct2
+correct:
+	./mycompiler < correct1.th > correct1.c
+	./mycompiler < correct2.th > correct2.c
+	gcc correct1.c -o correct1 
+	gcc correct2.c -o correct2

@@ -2,13 +2,19 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target 'all'.  Stop.
 
 # GNU Make 4.2.1
+ 
 # Built for x86_64-pc-linux-gnu
+ 
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
+ 
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+ 
 # This is free software: you are free to change and redistribute it.
+ 
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Fri Jun  3 00:19:43 2022
+# Make data base, printed on Fri Jun  3 18:17:30 2022
 
 # Variables
 
@@ -41,6 +47,7 @@ XAUTHORITY = /run/user/1000/gdm/Xauthority
 # environment
 GDMSESSION = ubuntu
 # environment
+ 
 XMODIFIERS = @im=ibus
 # makefile
 CURDIR := /media/giorgos/CC9686E09686CB02/Documents/SXOLH/Theory of Recitation/Theory of Recitation 2022
@@ -51,7 +58,7 @@ SNAP_DATA = /var/snap/code/97
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 9:60230
+JOURNAL_STREAM = 9:59873
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -81,7 +88,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 _ = /snap/code/97/usr/share/code/code
 # environment
-MANAGERPID = 6100
+MANAGERPID = 24711
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -97,7 +104,8 @@ PATH = /home/giorgos/.local/bin:/home/giorgos/anaconda3/bin:/home/giorgos/anacon
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/Lenovo-B5400:@/tmp/.ICE-unix/6320,unix/Lenovo-B5400:/tmp/.ICE-unix/6320
+SESSION_MANAGER = local/Lenovo-B5400:@/tmp/.ICE-unix/24931,unix/Lenovo-B5400:/tmp/.ICE-unix/24931
+ 
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -117,7 +125,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 55decc8f94934d9597df92cb7f799bdf
+INVOCATION_ID = 2be79be9c9b646d88d83efe5b1eed525
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/97/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -129,7 +137,9 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 17643
+ 
+GIO_LAUNCHED_DESKTOP_FILE_PID = 488275
+ 
 # automatic
 %F = $(notdir $%)
 # environment
@@ -145,7 +155,7 @@ PWD = /media/giorgos/CC9686E09686CB02/Documents/SXOLH/Theory of Recitation/Theor
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 6282
+SSH_AGENT_PID = 24894
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -162,10 +172,15 @@ VSCODE_CLI = 1
 VSCODE_CODE_CACHE_PATH = /home/giorgos/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
 # environment
 LOGNAME = giorgos
+ 
 # environment
+ 
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+ 
 # environment
+ 
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
+ 
 # environment
 SNAP_CONTEXT = KeH0HLVNlQXETyQfJ60kUJK7UsY7qy3GVOI90L_06_7n1Jtuc02n
 # environment
@@ -201,9 +216,7 @@ SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-LATEXWORKSHOP_DOCKER_LATEX = 
-# environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-68340c65-d282-40c4-b044-04ce364e166b.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-041d27b1-a568-4098-8736-7604ee9ac66b.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -286,17 +299,18 @@ WINDOWPATH = 2
 GJS_DEBUG_OUTPUT = stderr
 # default
 .RECIPEPREFIX := 
+ 
 # environment
+ 
 LC_ADDRESS = el_GR.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 17692
+VSCODE_PID = 488326
 # environment
 _CE_CONDA = 
- 
 # variable set hash-table stats:
-# Load=141/1024=14%, Rehash=0, Collisions=25/163=15%
+# Load=140/1024=14%, Rehash=0, Collisions=25/162=15%
 
 # Pattern-specific Variable Values
 
@@ -333,6 +347,7 @@ makefile:
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
+ 
 #  Failed to be updated.
 
 # Not a target:
@@ -362,6 +377,6 @@ GNUmakefile:
 # strcache performance: lookups = 21 / hit rate = 14%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=1/21=5%
-# Finished Make data base on Fri Jun  3 00:19:43 2022
+# Finished Make data base on Fri Jun  3 18:17:30 2022
 
  
